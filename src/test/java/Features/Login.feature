@@ -8,6 +8,6 @@ Feature: Login to website using username and password
 
     Examples:
       |   name     |password|options|
-      |AUTOMATION.1|Aa12345&|valid|
+      |AUTOMATION.1|Password@1|valid|
       |AUTOMTIION.2|FGs&23UF|invalid|
 

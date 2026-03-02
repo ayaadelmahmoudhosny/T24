@@ -15,6 +15,6 @@ Feature: Add new customer
 
     Examples:
       |     fullname   | shortname |familyname|title|gender|sector|mnemonic|industry|nationality|street|username|password|
-      |Aya Adel Mahmoud|Aya|Hosny       |Mrs|Female|3002|MAHAYA|1002|EG|zayed |AUTOMATION.1|Aa12345&|
+      |Aya Adel Mahmoud|Aya|Hosny       |Mrs|Female|3002|MAHAYA|1002|EG|zayed |AUTOMATION.1|Password@1|
 
 

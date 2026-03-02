@@ -30,7 +30,7 @@ public class Hooks {
     public void AddScreenshot(Scenario scenario) throws IOException {
 
         //screenshot
-        File sourcePath= 	((TakesScreenshot)DriverManager.driver).getScreenshotAs(OutputType.FILE);
+        File sourcePath = ((TakesScreenshot) DriverManager.driver).getScreenshotAs(OutputType.FILE);
         byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
         scenario.attach(fileContent, "image/png", "image");
     }

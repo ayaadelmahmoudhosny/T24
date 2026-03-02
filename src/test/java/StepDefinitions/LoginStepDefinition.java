@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 public class LoginStepDefinition {
 
-    LoginPage login= new LoginPage();
+    LoginPage login = new LoginPage();
 
     @Given("^User login with username (.+) and password (.+)$")
     public void userLoginWithUsernameNameAndPasswordPassword(String username, String password) throws InterruptedException {
@@ -20,7 +20,7 @@ public class LoginStepDefinition {
     }
 
     @When("User taps on Sign Button")
-    public void userTapsOnSignButton()throws InterruptedException  {
+    public void userTapsOnSignButton() throws InterruptedException {
         // Write code here that turns the phrase above into concrete actions
         login.ClickSignButton();
     }
@@ -31,11 +31,10 @@ public class LoginStepDefinition {
         // Write code here that turns the phrase above into concrete actions
 
 
-        if(options.equalsIgnoreCase("invalid"))
+        if (options.equalsIgnoreCase("invalid"))
             Assert.assertTrue(login.ErrorMsgDisplay());
         else
             Assert.assertTrue(login.HomePageDisplay());
-
 
 
     }

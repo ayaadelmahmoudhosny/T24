@@ -12,43 +12,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Actions {
+    WebDriverWait wait = new WebDriverWait(DriverManager.driver, Duration.ofSeconds(20));
 
-    public void TypeUsername (By username, String name)
-    {
+    public void TypeUsername(By username, String name) {
 
         DriverManager.driver.findElement(username).sendKeys(name);
     }
-    public void TypePassword (By password, String pass)
-    {
+
+    public void TypePassword(By password, String pass) {
 
         DriverManager.driver.findElement(password).sendKeys(pass);
     }
 
-    public void ClickButton(By Element){
-        DriverManager.driver.findElement(Element).click();
-
+    public void ClickButton(By Element) {
+        WebElement input = wait.until(
+                ExpectedConditions.elementToBeClickable(Element)
+        );
+        input.click();
     }
 
 
 
-    public Boolean isErrorMsgAppear(By errormsg){
+    public Boolean isMsgAppear(By msg) {
 
         //return DriverManager.driver.findElement(errormsg).isDisplayed();
-        WebDriverWait wait = new WebDriverWait(DriverManager.driver, Duration.ofSeconds(5));
         try {
-            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(errormsg));
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(msg));
             return true;
         } catch (TimeoutException e) {
             return false;
         }
     }
 
+    public Boolean isMsgContainsWord(By msg, String word) {
+
+        //return DriverManager.driver.findElement(errormsg).isDisplayed();
+        try {
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(msg));
+
+            return element.getText().contains(word);
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public String GetCustomerID(By msg)
+    {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(msg));
+        String message=element.getText();
+        String customerId = message.replaceAll(".*\\s(\\d+)\\s+\\d{2}:\\d{2}:\\d{2}.*", "$1");
+        return customerId;
+    }
+
     public boolean isHomePageDisplay(By homepage) {
-       // System.out.println(DriverManager.driver.getPageSource());
-       // System.out.println("After Login URL: " + DriverManager.driver.getCurrentUrl());
-        DriverManager.driver.switchTo().frame(1);
-        WebDriverWait wait = new WebDriverWait(DriverManager.driver, Duration.ofSeconds(10)
-        );
+        // System.out.println(DriverManager.driver.getPageSource());
+        // System.out.println("After Login URL: " + DriverManager.driver.getCurrentUrl());
+        //DriverManager.driver.switchTo().frame(1);
+
 
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(homepage));
@@ -58,46 +78,23 @@ public class Actions {
         }
     }
 
-    public String getPageTitle(){
-        ArrayList<String> windows =new ArrayList<>(DriverManager.driver.getWindowHandles());
-        DriverManager.driver.switchTo().window(windows.get(1));
-        return DriverManager.driver.getTitle();
-    }
 
     public void selectAddresstab(By physicalAddress) throws InterruptedException {
         DriverManager.driver.findElement(physicalAddress).click();
-       // System.out.println(DriverManager.driver.getPageSource());
-        //Thread.sleep(3000);
-
     }
 
-    public void setCustomerName(By customername,String name)
-    {
-        WebDriverWait wait = new WebDriverWait(DriverManager.driver, Duration.ofSeconds(10));
-
+    public void setCustomerStringData(By customerData, String data) {
         WebElement input = wait.until(
-                ExpectedConditions.elementToBeClickable(customername)
+                ExpectedConditions.elementToBeClickable(customerData)
         );
-        input.sendKeys(name);
-       // DriverManager.driver.findElement(customername).sendKeys(name);
+        input.sendKeys(data);
+        // DriverManager.driver.findElement(customername).sendKeys(name);
     }
 
-    public void setFemale(By female)
-    {
-        DriverManager.driver.findElement(female).click();
-    }
-    public void setMale(By male)
-    {
-        DriverManager.driver.findElement(male).click();
-    }
 
-    public void setCustomerSector(By customersector,String sector)
-    {
+    public void setCustomerSector(By customersector, String sector, By sectorTable) {
         DriverManager.driver.findElement(customersector).click();
-        WebDriverWait wait = new WebDriverWait(DriverManager.driver, Duration.ofSeconds(10));
 
-
-        By sectorTable = By.xpath("//table[@id='dropDownTable:fieldName:SECTOR']");
         WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(sectorTable));
 
         JavascriptExecutor js = (JavascriptExecutor) DriverManager.driver;
@@ -124,13 +121,11 @@ public class Actions {
         throw new RuntimeException("Sector not found in dropdown menu: " + sector);
 
     }
-    public void setCustomerindustry(By customerindustry,String industry)
-    {
+
+    public void setCustomerindustry(By customerindustry, String industry, By industryTable) {
         DriverManager.driver.findElement(customerindustry).click();
-        WebDriverWait wait = new WebDriverWait(DriverManager.driver, Duration.ofSeconds(20));
 
 
-        By industryTable = By.xpath("//table[@id='dropDownTable:fieldName:INDUSTRY']");
         WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(industryTable));
 
         JavascriptExecutor js = (JavascriptExecutor) DriverManager.driver;
@@ -158,24 +153,14 @@ public class Actions {
 
 
     }
-    public void setCustomerTitle(By customertitle,String title)
-    {
+
+    public void setCustomerTitle(By customertitle, String title) {
         DriverManager.driver.findElement(customertitle).click();
 
-        By row =By.xpath("//*[@value='"+title.toUpperCase()+"']");
+        By row = By.xpath("//*[@value='" + title.toUpperCase() + "']");
         DriverManager.driver.findElement(row).click();
 
     }
 
-    public Boolean isCompleteMsgDisplay(By completeMsg)
-    {
-        WebDriverWait wait = new WebDriverWait(DriverManager.driver, Duration.ofSeconds(10));
-        try {
-            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(completeMsg));
-            return true;
-        } catch (TimeoutException e) {
-            return false;
-        }
-    }
 
 }

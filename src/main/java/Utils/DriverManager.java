@@ -12,9 +12,9 @@ public class DriverManager {
     public static WebDriver driver;
 
     public static void openApp() throws IOException {
-        ConfigurationReader reader=new ConfigurationReader();
-        String url=reader.readConfigValue("Url");
-        String browser_prop=reader.readConfigValue("browser");
+        ConfigurationReader reader = new ConfigurationReader();
+        String url = reader.readConfigValue("Url");
+        String browser_prop = reader.readConfigValue("browser");
         ChromeOptions options = new ChromeOptions();
 
         // Ignore SSL certificate errors
@@ -23,10 +23,10 @@ public class DriverManager {
         driver = new ChromeDriver(options);
 
 
-		driver.get(url);
+        driver.get(url);
     }
 
-    public static void closeApp(){
+    public static void closeApp() {
         driver.quit();
     }
 }

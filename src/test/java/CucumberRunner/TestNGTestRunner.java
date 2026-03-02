@@ -5,8 +5,8 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 
-@CucumberOptions(features="src/test/java/Features/AddCustomer.feature",glue="StepDefinitions",monochrome=true,
-        plugin= {"html:target/cucumber.html","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+@CucumberOptions(features = "src/test/java/Features/AddCustomer.feature", glue = "StepDefinitions", monochrome = true,
+        plugin = {"html:target/cucumber.html", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failed_scenarios.txt"})
 public class TestNGTestRunner extends AbstractTestNGCucumberTests {
 //    @Override
