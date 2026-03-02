@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class Helper {
 
-    public void SwitchToFrame(int frameindex)
-    {
+    public void SwitchToFrame(int frameindex) {
         DriverManager.driver.switchTo().frame(frameindex);
     }
 

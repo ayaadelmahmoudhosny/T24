@@ -5,7 +5,7 @@ import Utils.Helper;
 import org.openqa.selenium.By;
 
 public class LoginPage extends Actions {
-    Helper helper=new Helper();
+    Helper helper = new Helper();
     By username = By.xpath("//*[@name='signOnName']");
     By password = By.xpath("//*[@name='password']");
     By signinButton = By.xpath("//*[@value='Sign in']");

@@ -12,6 +12,10 @@ Feature: Add new customer
     And User Taps on physical address to enter<street> info
     And User taps on commit
     Then User moves to next page
+    And User back to main window to select Unathorized customer
+    Then User clicks on search button
+    And User write customer id
+    And User taps on find
 
     Examples:
       |     fullname   | shortname |familyname|title|gender|sector|mnemonic|industry|nationality|street|username|password|

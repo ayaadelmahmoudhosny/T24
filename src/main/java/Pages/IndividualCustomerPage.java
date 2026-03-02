@@ -5,7 +5,7 @@ import Utils.Helper;
 import org.openqa.selenium.By;
 
 public class IndividualCustomerPage extends Actions {
-    Helper helper=new Helper();
+    Helper helper = new Helper();
     By fullName = By.xpath("//*[@name='fieldName:NAME.1:1']");
     By shortName = By.xpath("//*[@name='fieldName:SHORT.NAME:1']");
     By familyName = By.xpath("//*[@name='fieldName:FAMILY.NAME']");
@@ -30,8 +30,7 @@ public class IndividualCustomerPage extends Actions {
     //utiliy class frame and window handel method 1 (switch frame), method 2(switch window)
 
 
-    public String SwitchtoNewWindow()
-    {
+    public String SwitchtoNewWindow() {
         return helper.SwitchToNextWindow();
     }
 
@@ -67,13 +66,13 @@ public class IndividualCustomerPage extends Actions {
     }
 
     public Boolean CompleteMgs(String msg) {
-       // return isMsgAppear(completeMsg);
-        customerID=GetCustomerID(completeMsg);
+        // return isMsgAppear(completeMsg);
+        customerID = GetCustomerID(completeMsg);
         System.out.println(customerID);
-        return isMsgContainsWord(completeMsg,msg);
+        return isMsgContainsWord(completeMsg, msg);
     }
 
-    public String ReturnCustomerId(){
+    public String ReturnCustomerId() {
         return customerID;
     }
 }

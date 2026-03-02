@@ -6,20 +6,20 @@ import Utils.Helper;
 import org.openqa.selenium.By;
 
 public class UnauthorisedCustomerPage extends Actions {
-    Helper helper=new Helper();
-    By unauthorisedCustomer= By.xpath("//a[contains(@href,'CUSTOMER.NAU.AMEND.MDI')]");
-    By search= By.xpath("//a[contains(@href,'SELECT')]");
+    Helper helper = new Helper();
+    By unauthorisedCustomer = By.xpath("//a[contains(@href,'CUSTOMER.NAU.AMEND.MDI')]");
+    By search = By.xpath("//a[contains(@href,'SELECT')]");
     By searchByID = By.xpath("//*[@name='value:1:1:1']");
-    By findButton= By.xpath("//*[@id='defaultButton']");
-    By foundMsg=By.xpath("//a[@class='textbtn' and normalize-space()='Find']");
-
+    By findButton = By.xpath("//*[@id='defaultButton']");
+    By foundMsg = By.xpath("//a[@class='textbtn' and normalize-space()='Find']");
 
 
     public void ClickUnauthorisedCustomer() throws InterruptedException {
-        System.out.println( helper.SwitchToMainWindow());
+        System.out.println(helper.SwitchToMainWindow());
         ClickButton(unauthorisedCustomer);
 
     }
+
     public void ClickSearch() {
 
         helper.SwitchToNextWindow();
@@ -28,8 +28,7 @@ public class UnauthorisedCustomerPage extends Actions {
 
     }
 
-    public void EnterCustomerID(String Id)
-    {
+    public void EnterCustomerID(String Id) {
         setCustomerStringData(searchByID, Id);
     }
 
@@ -37,8 +36,7 @@ public class UnauthorisedCustomerPage extends Actions {
         ClickButton(findButton);
     }
 
-    public Boolean CustomerFound()
-    {
-       return isMsgAppear(foundMsg);
+    public Boolean CustomerFound() {
+        return isMsgAppear(foundMsg);
     }
 }

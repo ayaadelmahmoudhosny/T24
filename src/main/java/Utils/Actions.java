@@ -32,7 +32,6 @@ public class Actions {
     }
 
 
-
     public Boolean isMsgAppear(By msg) {
 
         //return DriverManager.driver.findElement(errormsg).isDisplayed();
@@ -56,10 +55,9 @@ public class Actions {
         }
     }
 
-    public String GetCustomerID(By msg)
-    {
+    public String GetCustomerID(By msg) {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(msg));
-        String message=element.getText();
+        String message = element.getText();
         String customerId = message.replaceAll(".*\\s(\\d+)\\s+\\d{2}:\\d{2}:\\d{2}.*", "$1");
         return customerId;
     }

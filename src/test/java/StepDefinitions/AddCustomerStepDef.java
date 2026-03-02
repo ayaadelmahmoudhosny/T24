@@ -4,6 +4,7 @@ package StepDefinitions;
 import Pages.HomePage;
 import Pages.IndividualCustomerPage;
 import Pages.UnauthorisedCustomerPage;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,9 +12,9 @@ import org.testng.Assert;
 
 public class AddCustomerStepDef {
     IndividualCustomerPage customer = new IndividualCustomerPage();
-    UnauthorisedCustomerPage uncustomer =new UnauthorisedCustomerPage();
+    UnauthorisedCustomerPage uncustomer = new UnauthorisedCustomerPage();
 
-    HomePage home =new HomePage();
+    HomePage home = new HomePage();
 
     @And("User clicks on customer menu")
     public void userClicksOnCustomerMenu() {
@@ -70,9 +71,28 @@ public class AddCustomerStepDef {
     @Then("User moves to next page")
     public void userMovesToNextPage() throws InterruptedException {
         Assert.assertTrue(customer.CompleteMgs("Complete"));
+
+
+    }
+
+    @And("User back to main window to select Unathorized customer")
+    public void userBackToMainWindowToSelectUnathorizedCustomer() throws InterruptedException {
         uncustomer.ClickUnauthorisedCustomer();
+    }
+
+    @Then("User clicks on search button")
+    public void userClicksOnSearchButton() {
         uncustomer.ClickSearch();
+    }
+
+    @And("User write customer id")
+    public void userWriteCustomerId() {
         uncustomer.EnterCustomerID(customer.ReturnCustomerId());
+    }
+
+    @And("User taps on find")
+    public void userTapsOnFind() throws InterruptedException {
+
         uncustomer.ClickFind();
         Assert.assertTrue(uncustomer.CustomerFound());
     }

@@ -5,7 +5,7 @@ import Utils.Helper;
 import org.openqa.selenium.By;
 
 public class HomePage extends Actions {
-    Helper helper=new Helper();
+    Helper helper = new Helper();
     By customerMenu = By.xpath("//img[@alt='Customer Menu']");
     By customerOfiicerMenu = By.xpath("//img[@alt='Customer Officer Menu']");
     By customer = By.xpath("//img[@alt='Customer']");
